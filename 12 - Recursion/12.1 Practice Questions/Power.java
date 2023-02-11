@@ -20,7 +20,11 @@ public class Power {
         int halfPowersq = halfPower * halfPower;
 
         if (expo % 2 != 0) {
-            halfPowersq = base * halfPowersq;
+            if (expo > 0) {
+                return halfPowersq * base;
+            } else {
+                return halfPowersq / base; // if expo is negative
+            }
         }
 
         return halfPowersq;

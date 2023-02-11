@@ -1,42 +1,51 @@
+// Given an array nums of size n, return the majority element. 
+// The majority element is the element that appears more than [n/2] times.
+// You may assume that the majority element always exists in the array.
+// Tutorial - https://youtu.be/AoX3BPWNnoE
+
 public class MajorityElement {
     public static void main(String[] args) {
         int nums[] = { 2, 2, 1, 1, 1, 2, 2 };
-        majorityElement(nums);
+        System.out.println(majorityElement(nums));
     }
 
-    private static void majorityElement(int[] nums) {
-        int numsMax = arrMax(nums, 0, Integer.MIN_VALUE);
-        int temp[] = new int[numsMax+1];
+    // brute-force approach - [TC = O(n^2)]
+    // private static int majorityElement(int[] nums) {
+    //     int majorityElementCount = nums.length / 2;
+
+    //     for (int i = 0; i < nums.length; i++) {
+    //         int count = 0;
+
+    //         for (int j = 0; j < nums.length; j++) {
+    //             if (nums[i] == nums[j]) {
+    //                 count += 1;
+    //             }
+    //         }
+
+    //         if (count > majorityElementCount) {
+    //             return nums[i];
+    //         }
+    //     }
+
+    //     return -1;
+    // }
+
+    // optimized approach [Moore Voting Algorithm - TC = O(n)]
+    private static int majorityElement(int[] nums) {
+        int count = 0;
+        int candidate = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            temp[nums[i]]++;
-        }
-
-        int max= Integer.MIN_VALUE;
-        for (int i = 0; i < temp.length; i++) {
-            max = Math.max(max, temp[i]);
-        }
-
-        for (int i = 0; i < temp.length; i++) {
-            if(temp[i] == max){
-                System.out.println(i);
+            if (count == 0) {
+                candidate = nums[i];
+            }
+            if (nums[i] == candidate) {
+                count += 1;
+            } else {
+                count -= 1;
             }
         }
-    }
 
-    public static int arrMax(int[] arr, int i, int max) {
-        if (i == arr.length) {
-            return max;
-        }
-
-        max = Math.max(max, arr[i]);
-        arrMax(arr, i + 1, max);
-        return max;
-    }
-
-    public static void printArr(int arr[]) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
+        return candidate;
     }
 }

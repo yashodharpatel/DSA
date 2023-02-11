@@ -7,7 +7,7 @@ public class Factorial {
         if (n == 0 || n == 1) {
             return 1;
         }
-        int factorial = n * calculateFactorial(n - 1);
-        return factorial;
+
+        return n * calculateFactorial(n - 1);
     }
 }
