@@ -63,7 +63,7 @@ public class ActivitySelection {
         ans.add(activities[0][0]); // index
         lastactivityendTime = activities[0][2];
 
-        for (int i = 0; i < activities.length; i++) {
+        for (int i = 1; i < activities.length; i++) {
             // select activity
             if (activities[i][1] >= lastactivityendTime) {
                 count++;
