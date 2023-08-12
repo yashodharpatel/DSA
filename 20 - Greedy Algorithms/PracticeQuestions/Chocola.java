@@ -5,9 +5,11 @@ import java.util.Collections;
 
 public class Chocola {
     public static void main(String[] args) {
+        // Given
         Integer[] horizantalCost = { 4, 1, 2 };
         Integer[] verticalCost = { 2, 1, 3, 1, 4 };
 
+        // Sort both the array in descending order 
         Arrays.sort(horizantalCost, Collections.reverseOrder());
         Arrays.sort(verticalCost, Collections.reverseOrder());
 
